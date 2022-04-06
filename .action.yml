@@ -13,9 +13,12 @@ inputs:
   pr_number:
     description: "PR number"
     required: true
+  filter_environment:
+    description: "Environment"
+    required: true
 runs:
   using: 'composite'
   steps:
     - run: |
-        bundle exec ruby run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }}
+        bundle exec ruby run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }} ${{ inputs.filter_environment }}
       shell: bash
