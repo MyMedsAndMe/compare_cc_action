@@ -13,9 +13,6 @@ inputs:
   pr_number:
     description: "PR number"
     required: true
-  filter_environment:
-    description: "Environment"
-    required: true
 runs:
   using: 'composite'
   steps:
@@ -30,5 +27,5 @@ runs:
           experimental: '${{ inputs.filename }}-exp.yml'
           validation: '${{ inputs.filename }}-val.yml'
     - run: |
-        bundle exec ruby run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }} ${{ inputs.filter_environment }}
+        bundle exec ruby run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }} ${{ steps.filter.outputs }}
       shell: bash
