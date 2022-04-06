@@ -1,0 +1,21 @@
+name: 'Compare CC'
+description: 'Builds a link for comparing versions and adds it as comment to the PR'
+inputs:
+  before:
+    description: "Base sha"
+    required: true
+  after:
+    description: "Head sha"
+    required: true
+  filename:
+    description: "Yaml to be loaded"
+    required: true
+  pr_number:
+    description: "PR number"
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        bundle exec ruby run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }}
+      shell: bash
