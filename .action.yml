@@ -19,6 +19,16 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Adding Filters
+      uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          production: '${{ inputs.filename }}-prod.yml'
+          training: '${{ inputs.filename }}-trg.yml'
+          stage: '${{ inputs.filename }}-stg.yml'
+          experimental: '${{ inputs.filename }}-exp.yml'
+          validation: '${{ inputs.filename }}-val.yml'
     - run: |
         bundle exec ruby run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }} ${{ inputs.filter_environment }}
       shell: bash
