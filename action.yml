@@ -14,7 +14,6 @@ inputs:
     description: "PR number"
     required: true
 runs:
-  using: 'composite'
   steps:
     - name: Adding Filters
       uses: dorny/paths-filter@v2
