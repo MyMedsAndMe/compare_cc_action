@@ -28,6 +28,6 @@ runs:
           validation: '${{ inputs.filename }}-val.yml'
     - run: |
         curl -O https://github.com/MyMedsAndMe/compare_cc_action/bin/run.rb
-        ruby run.rb
+        bundle exec ruby run.rb
        # ruby ../
       shell: bash
