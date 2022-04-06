@@ -16,6 +16,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
     - name: Adding Filters
       uses: dorny/paths-filter@v2
       id: filter
