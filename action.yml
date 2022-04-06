@@ -27,6 +27,7 @@ runs:
           experimental: '${{ inputs.filename }}-exp.yml'
           validation: '${{ inputs.filename }}-val.yml'
     - run: |
-        ls ../
+        curl -O https://github.com/MyMedsAndMe/compare_cc_action/bin/run.rb
+        ruby run.rb
        # ruby ../
       shell: bash
