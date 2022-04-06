@@ -1,4 +1,4 @@
-name: 'Compare CC'
+name: 'CompareCC'
 description: 'Builds a link for comparing versions and adds it as comment to the PR'
 inputs:
   before:
