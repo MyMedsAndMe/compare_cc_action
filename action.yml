@@ -27,5 +27,5 @@ runs:
           experimental: '${{ inputs.filename }}-exp.yml'
           validation: '${{ inputs.filename }}-val.yml'
     - run: |
-        ruby run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }} ${{ steps.filter.outputs }}
+        ruby lib/run.rb ${{ inputs.before }} ${{ inputs.after }} ${{ inputs.filename }} ${{ inputs.pr_number }} ${{ steps.filter.outputs }}
       shell: bash
