@@ -17,18 +17,15 @@ def find_version(hash)
 end
 
 puts "This is the running script"
-puts "This is ARGV-0: #{ARGV[0]}"
-puts "This is ARGV-1: #{ARGV[1]}"
-puts "This is ARGV-2: #{ARGV[2]}"
-puts "This is ARGV-3: #{ARGV[3]}"
-puts "This is ARGV-4: #{ARGV[4]}"
 # Gets previous version of the modified file
 if ARGV[4] == true
   current_file = "#{ARGV[2]}-prod.yml"
+  puts "This is the current file: #{current_file}"
 elsif ARGV[5] == true
   current_file = "#{ARGV[2]}-val.yml"
 elsif ARGV[6] == true
   current_file = "#{ARGV[2]}-exp.yml"
+  puts "This is the current file: #{current_file}"
 elsif ARGV[7] == true
   current_file = "#{ARGV[2]}-stg.yml"
 elsif ARGV[8] == true
@@ -36,10 +33,10 @@ elsif ARGV[8] == true
 else
   puts "Nothing to do here"
 end
-before = YAML.load `git show #{ARGV[0]}: "#{current_file}"`
-# Gets updated version of the modified file
-after = YAML.load `git show #{ARGV[1]}: "#{current_file}"`
+# before = YAML.load `git show #{ARGV[0]}: "#{current_file}"`
+# # Gets updated version of the modified file
+# after = YAML.load `git show #{ARGV[1]}: "#{current_file}"`
 
-body_text = "Please, visit for checking the changes in #{current_file}: <a>https://github.com/MyMedsAndMe/customer_configurations/compare/#{find_version(before)}...#{find_version(after)}?expand=1</a>"
-# Run github cli command to add a comment to the PR
-puts `gh pr comment "#{ARGV[3]}" --body "#{body_text}"`
+# body_text = "Please, visit for checking the changes in #{current_file}: <a>https://github.com/MyMedsAndMe/customer_configurations/compare/#{find_version(before)}...#{find_version(after)}?expand=1</a>"
+# # Run github cli command to add a comment to the PR
+# puts `gh pr comment "#{ARGV[3]}" --body "#{body_text}"`
