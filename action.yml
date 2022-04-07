@@ -26,7 +26,9 @@ runs:
           stage: '${{ inputs.filename }}-stg.yml'
           experimental: '${{ inputs.filename }}-exp.yml'
           validation: '${{ inputs.filename }}-val.yml'
-    - run: |
-        curl -O https://github.com/MyMedsAndMe/compare_cc_action/bin/run.rb
+    - run:
+        cd lib |
+        curl -O https://github.com/MyMedsAndMe/compare_cc_action/run.rb
+        # ruby run.rb ${{inputs.before}} ${{inputs.after}} ${{inputs.filename}} ${{inputs.pr_number}} ${{steps.filter.outputs}}
         ls
       shell: bash
