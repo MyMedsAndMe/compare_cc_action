@@ -17,6 +17,7 @@ def find_version(hash)
 end
 
 puts "This is the running script"
+puts "This is the experimental arg: #{ARGV[6]}"
 # Gets previous version of the modified file
 if ARGV[4] == true
   current_file = "#{ARGV[2]}-prod.yml"
