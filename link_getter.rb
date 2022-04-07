@@ -19,25 +19,25 @@ end
 puts "This is the running script"
 puts "This is the experimental arg: #{ARGV[6]}"
 # Gets previous version of the modified file
-if ARGV[4]
-  current_file = "#{ARGV[4]}"
+if ARGV[4] == "true"
+  current_file = "#{ARGV[2]}-prod.yml"
   puts "This is the current file: #{current_file}"
-elsif ARGV[5]
-  current_file = "#{ARGV[5]}"
-elsif ARGV[6]
-  current_file = "#{ARGV[6]}"
+elsif ARGV[5] == "true"
+  current_file = "#{ARGV[2]}-val.yml"
+elsif ARGV[6] == "true"
+  current_file = "#{ARGV[2]}-exp.yml"
   puts "This is the current file: #{current_file}"
-elsif ARGV[7]
-  current_file = "#{ARGV[7]}"
-elsif ARGV[8]
-  current_file = "#{ARGV[8]}"
+elsif ARGV[7] == "true"
+  current_file = "#{ARGV[2]}-stg.yml"
+elsif ARGV[8] == "true"
+  current_file = "#{ARGV[2]}-trg.yml"
 else
   puts "Nothing to do here"
 end
-# before = YAML.load `git show #{ARGV[0]}:#{current_file}`
-# # Gets updated version of the modified file
-# after = YAML.load `git show #{ARGV[1]}:#{current_file}`
+before = YAML.load `git show #{ARGV[0]}:#{current_file}`
+# Gets updated version of the modified file
+after = YAML.load `git show #{ARGV[1]}:#{current_file}`
 
-# body_text = "Please, visit for checking the changes in #{current_file}: <a>https://github.com/MyMedsAndMe/customer_configurations/compare/#{find_version(before)}...#{find_version(after)}?expand=1</a>"
-# # Run github cli command to add a comment to the PR
-# puts `gh pr comment "#{ARGV[3]}" --body "#{body_text}"`
+body_text = "Please, visit for checking the changes in #{current_file}: <a>https://github.com/MyMedsAndMe/customer_configurations/compare/#{find_version(before)}...#{find_version(after)}?expand=1</a>"
+# Run github cli command to add a comment to the PR
+puts `gh pr comment "#{ARGV[3]}" --body "#{body_text}"`
