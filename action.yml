@@ -30,4 +30,5 @@ runs:
         cd lib
         curl -O https://github.com/MyMedsAndMe/compare_cc_action/link_getter.rb
         ls
+        cat link_getter.rb
       shell: bash
