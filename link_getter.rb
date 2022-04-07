@@ -1,32 +1,28 @@
 #!/usr/bin/env ruby
-
 require 'yaml'
 
 # This script builds a link for comparing versions when PR environment files and it adds it as a comment
 # Usage example:
-# ruby lib/versions_extractor.rb $GITHUB_BEFORE $GITHUB_AFTER "mymeds-stg.yml" $PR_NUMBER 
+# ruby lib/versions_extractor.rb $GITHUB_BEFORE $GITHUB_AFTER "mymeds-stg.yml" $PR_NUMBER ${{steps.filter.outputs.production}} ${{steps.filter.outputs.validation}} ${{steps.filter.outputs.experimental}} ${{steps.filter.outputs.stage}} ${{steps.filter.outputs.training}}
 # Arguments:
 # ARGV[0]: $GITHUB_BEFORE -> ${{ github.event.before }}
 # ARGV[1]: $GITHUB_AFTER -> ${{ github.event.after }}
 # ARGV[2]: File name
 # ARGV[3]: $PR_NUMBER -> ${{github.event.pull_request.number}}
-# ARGV[4]: environment
+# From ARGV[4] to ARGV[8], booleans for environments
+
 def find_version(hash)
   cc = hash["components"].find { |c| c["repo_name"] == "customer_configurations" }
   cc["version"] if cc
 end
 
-puts "This is the running script"
-puts "This is the experimental arg: #{ARGV[6]}"
 # Gets previous version of the modified file
 if ARGV[4] == "true"
   current_file = "#{ARGV[2]}-prod.yml"
-  puts "This is the current file: #{current_file}"
 elsif ARGV[5] == "true"
   current_file = "#{ARGV[2]}-val.yml"
 elsif ARGV[6] == "true"
   current_file = "#{ARGV[2]}-exp.yml"
-  puts "This is the current file: #{current_file}"
 elsif ARGV[7] == "true"
   current_file = "#{ARGV[2]}-stg.yml"
 elsif ARGV[8] == "true"
@@ -34,6 +30,7 @@ elsif ARGV[8] == "true"
 else
   puts "Nothing to do here"
 end
+
 before = YAML.load `git show #{ARGV[0]}:#{current_file}`
 # Gets updated version of the modified file
 after = YAML.load `git show #{ARGV[1]}:#{current_file}`
