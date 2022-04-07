@@ -28,7 +28,7 @@ runs:
           validation: '${{ inputs.filename }}-val.yml'
     - run: |
         cd lib
-        curl -O https://github.com/MyMedsAndMe/compare_cc_action/run.rb
+        curl -O https://github.com/MyMedsAndMe/compare_cc_action/link_getter.rb
         ls
-        ruby run.rb
+        ruby link_getter.rb
       shell: bash
