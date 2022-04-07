@@ -17,11 +17,11 @@
 # end
 
 puts "This is the running script"
-# puts "This is ARGV-0: #{ARGV[0]}"
-# puts "This is ARGV-1: #{ARGV[1]}"
-# puts "This is ARGV-0: #{ARGV[2]}"
-# puts "This is ARGV-0: #{ARGV[3]}"
-#puts "This is ARGV-0: #{ARGV[4]}"
+puts "This is ARGV-0: #{ARGV[0]}"
+puts "This is ARGV-1: #{ARGV[1]}"
+puts "This is ARGV-0: #{ARGV[2]}"
+puts "This is ARGV-0: #{ARGV[3]}"
+puts "This is ARGV-0: #{ARGV[4]}"
 # Gets previous version of the modified file
 # current_environment = ARGV[4]
 # if current_environment.production == true
