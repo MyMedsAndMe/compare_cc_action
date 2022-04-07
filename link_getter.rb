@@ -23,17 +23,16 @@ puts "This is ARGV-0: #{ARGV[2]}"
 puts "This is ARGV-0: #{ARGV[3]}"
 puts "This is ARGV-0: #{ARGV[4]}"
 # Gets previous version of the modified file
-current_environment = ARGV[4]
-if current_environment.production == true
+if ARGV[4] == true
   current_file = "#{ARGV[2]}-prod.yml"
-elsif current_environment.experimental == true
-  current_file = "#{ARGV[2]}-exp.yml"
-elsif current_environment.training == true
-  current_file = "#{ARGV[2]}-trg.yml"
-elsif current_environment.stage == true
-  current_file = "#{ARGV[2]}-stg.yml"
-elsif current_environment.validation == true
+elsif ARGV[5] == true
   current_file = "#{ARGV[2]}-val.yml"
+elsif ARGV[6] == true
+  current_file = "#{ARGV[2]}-exp.yml"
+elsif ARGV[7] == true
+  current_file = "#{ARGV[2]}-stg.yml"
+elsif ARGV[8] == true
+  current_file = "#{ARGV[2]}-trg.yml"
 else
   puts "Nothing to do here"
 end
