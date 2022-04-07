@@ -29,7 +29,6 @@ runs:
     - run: |
         cd lib
         curl -O https://github.com/MyMedsAndMe/compare_cc_action/run.rb
-        ruby run.rb ${{inputs.before}} ${{inputs.after}} ${{inputs.filename}} ${{inputs.pr_number}}
         ls
-        cat run.rb
+        ruby run.rb
       shell: bash
