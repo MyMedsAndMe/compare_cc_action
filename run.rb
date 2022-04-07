@@ -11,15 +11,16 @@
 # ARGV[2]: File name
 # ARGV[3]: $PR_NUMBER -> ${{github.event.pull_request.number}}
 # ARGV[4]: environment
-def find_version(hash)
-  cc = hash["components"].find { |c| c["repo_name"] == "customer_configurations" }
-  cc["version"] if cc
-end
+# def find_version(hash)
+#   cc = hash["components"].find { |c| c["repo_name"] == "customer_configurations" }
+#   cc["version"] if cc
+# end
 
-puts "This is ARGV-0: #{ARGV[0]}"
-puts "This is ARGV-1: #{ARGV[1]}"
-puts "This is ARGV-0: #{ARGV[2]}"
-puts "This is ARGV-0: #{ARGV[3]}"
+puts "This is the running script"
+# puts "This is ARGV-0: #{ARGV[0]}"
+# puts "This is ARGV-1: #{ARGV[1]}"
+# puts "This is ARGV-0: #{ARGV[2]}"
+# puts "This is ARGV-0: #{ARGV[3]}"
 #puts "This is ARGV-0: #{ARGV[4]}"
 # Gets previous version of the modified file
 # current_environment = ARGV[4]
