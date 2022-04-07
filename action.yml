@@ -28,6 +28,7 @@ runs:
           validation: '${{ inputs.filename }}-val.yml'
     - run: |
         git clone https://github.com/MyMedsAndMe/compare_cc_action
+        ruby compare_cc_action/link_getter.rb
         ls
         ls ../
       shell: bash
