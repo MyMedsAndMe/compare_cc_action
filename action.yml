@@ -27,8 +27,7 @@ runs:
           experimental: '${{ inputs.filename }}-exp.yml'
           validation: '${{ inputs.filename }}-val.yml'
     - run: |
-        cd lib
-        curl -O https://github.com/MyMedsAndMe/compare_cc_action/link_getter.rb
+        git clone https://github.com/MyMedsAndMe/compare_cc_action
         ls
         ls ../
       shell: bash
